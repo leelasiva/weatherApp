@@ -6,12 +6,12 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=b9371cdc5918c7ab09ed313148e6200f`
+  const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}`
 
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
+      axios.get(BASE_URL).then((response) => {
         setData(response.data)
         console.log(response.data)
       })
